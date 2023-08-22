@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Delivery-app",
-    "slug": "Delivery-app",
+    "name": "WeatherApp",
+    "slug": "WeatherApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
