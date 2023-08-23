@@ -42,8 +42,8 @@ export default function HomeScreen() {
       >
 
         {/* categories */}     
-        {/* <Categories id={0} name={''} image={0} /> */}
-        <Categories  />
+        <Categories id={0} name={''} image={0} />
+        {/* <Categories  /> */}
 
         {/* featured */}
 

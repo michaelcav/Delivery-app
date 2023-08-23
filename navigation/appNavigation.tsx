@@ -5,6 +5,8 @@ import HomeScreen from '../screens/HomeScreen'
 import RestaurantScreen from '../screens/RestaurantScreen';
 import { LogBox, Text, View } from 'react-native';
 import CartScreen from '../screens/CartScreen';
+import OrderScreen from '../screens/OrderScreen';
+import DeliveryScreen from '../screens/DeliveryScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -22,6 +24,8 @@ const AppNavigation: React.FC = () => {
         <Stack.Screen name='Home' component={HomeScreen} />
         <Stack.Screen name='Restaurant'  component={RestaurantScreen} />
         <Stack.Screen name='Cart' options={{presentation: 'modal'}} component={CartScreen} />
+        <Stack.Screen name='Order' options={{presentation: 'fullScreenModal'}} component={OrderScreen} />
+        <Stack.Screen name='Delivery' options={{presentation: 'fullScreenModal'}} component={DeliveryScreen} />
       </Stack.Navigator>
 
     </NavigationContainer>
