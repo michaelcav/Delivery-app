@@ -9,7 +9,7 @@ const initialState: CounterState = {
   items: [],
 }
 
-export const restaurantSlice = createSlice({
+export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
@@ -24,7 +24,7 @@ export const restaurantSlice = createSlice({
       } else {
         console.log(`can't remove the item that is not add to cart`);
       }
-       state.items = newCart;
+      state.items = newCart;
     },
     emptyCart: (state, action) => {
       state.items = [];
@@ -32,8 +32,14 @@ export const restaurantSlice = createSlice({
   }
 })
 // Action creators are generated for each case reducer function
-export const { setRestaurant } = restaurantSlice.actions;
+export const { addToCart, removeFromCart, emptyCart } = cartSlice.actions;
 
-export const selectRestaurant = (state: { restaurant: { restaurant: any } }) => state.restaurant.restaurant;
+export const selectRestaurant = (state ) => state.restaurant.restaurant;
 
-export default restaurantSlice.reducer
+export const selectCartItems = state => state.cart.items;
+
+export const selectCartItemsById = (state, id) => state.cart.items.filter(item => item.id === id);
+
+export const selectCartTotal = (state: { cart: { items: any[] } }) => state.cart.items.reduce((total, item) => total = total + item.price, 0);
+
+export default cartSlice.reducer

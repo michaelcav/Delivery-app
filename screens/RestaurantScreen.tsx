@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import * as Icon from 'react-native-feather'
 import { useNavigation, useRoute } from '@react-navigation/native'
@@ -7,13 +7,24 @@ import { RestaurantType } from '../types/interfaces';
 import DishRow from '../components/dishRow';
 import CartIcon from '../components/cartIcon';
 import { StatusBar } from 'expo-status-bar';
+import {useDispatch} from 'react-redux'
+import { setRestaurant } from '../slices/restaurantSlice';
 
 
 const RestaurantScreen: React.FC = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const item = route.params as RestaurantType;
-  console.log(item);
+  // console.log(item);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+     if(item && item.id){
+      dispatch(setRestaurant({...item}))
+     }
+  }, [])
+
+
   return (
     <View>
       <CartIcon/>

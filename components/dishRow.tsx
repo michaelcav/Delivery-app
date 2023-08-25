@@ -3,6 +3,8 @@ import { View, Image, Text, TouchableOpacity } from 'react-native';
 import { DishType } from '../types/interfaces'
 import * as Icon from 'react-native-feather'
 import { themeColors } from '../theme';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, removeFromCart, selectCartItemsById } from '../slices/cartSlice';
 
 interface DishProps {
   item: DishType;
@@ -10,6 +12,16 @@ interface DishProps {
 
 
 const DishRow: React.FC<DishProps> = ({ item }) => {
+  const dispatch = useDispatch();
+  const totalItems = useSelector(state => selectCartItemsById(state, item.id));
+
+  const handleIncrease = () => {
+    dispatch(addToCart({ ...item }))
+  }
+
+  const handleDecrease = () => {
+    dispatch(removeFromCart({ id: item.id }))
+  }
   return (
     <View
       style={{ shadowColor: '#000', shadowOpacity: 0.1 }}
@@ -27,19 +39,29 @@ const DishRow: React.FC<DishProps> = ({ item }) => {
           <Text className='text-gray-700 text-lg font-bold'>${item.price}
           </Text>
           <View className='flex-row items-center'>
+
             <TouchableOpacity
-            className='p-1 rounded-full'
-            style={{backgroundColor: themeColors.bgColor(1)}}
+              onPress={handleDecrease}
+              disabled={!totalItems.length}
+              className='p-1 rounded-full'
+              style={{ backgroundColor: themeColors.bgColor(1) }}
             >
               <Icon.Minus strokeWidth={2} height={20} width={20} stroke={'white'} />
             </TouchableOpacity>
-            <Text className='px-2'>{2}</Text>
+
+            {/* total */}
+            <Text className='px-2'>
+              {totalItems.length}
+            </Text>
+
             <TouchableOpacity
-            className='p-1 rounded-full'
-            style={{backgroundColor: themeColors.bgColor(1)}}
+              onPress={handleIncrease}
+              className='p-1 rounded-full'
+              style={{ backgroundColor: themeColors.bgColor(1) }}
             >
               <Icon.Plus strokeWidth={2} height={20} width={20} stroke={'white'} />
             </TouchableOpacity>
+
           </View>
         </View>
       </View>

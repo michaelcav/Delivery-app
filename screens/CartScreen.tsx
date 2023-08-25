@@ -1,15 +1,19 @@
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
 import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import {featured} from '../constants'
 import * as Icon from 'react-native-feather'
 import {useNavigation} from '@react-navigation/native'
 import { themeColors } from '../theme'
 import { StatusBar } from 'expo-status-bar'
+import { useSelector } from 'react-redux'
+import { selectRestaurant } from '../slices/restaurantSlice'
 
 export default function CartScreen() {
-  const restaurant = featured.restaurants[0];
+  // const restaurant = featured.restaurants[0];
+  // const restaurant = useSelector(state=> state.restaurant.restaurant);
+  const restaurant = useSelector(selectRestaurant)
   const navigation = useNavigation();
+  
   return (
     <>
     <StatusBar/>
@@ -24,7 +28,7 @@ export default function CartScreen() {
           </TouchableOpacity>
           <View>
             <Text className='text-center font-bold text-xl'>Your cart</Text>
-            <Text className='text-center text-gray-500'>{restaurant.name}</Text>
+            <Text className='text-center text-gray-500'>{restaurant?.name}</Text>
           </View>
         </View>
         {/* delivery time */}
@@ -47,7 +51,7 @@ export default function CartScreen() {
         }}
         className='bg-white pt-5'>
           {
-            restaurant.dishes.map((dish, index)=> {
+            restaurant?.dishes.map((dish, index)=> {
               return (
                 <View
                 style={{shadowColor: '#000'}}

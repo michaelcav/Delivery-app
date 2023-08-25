@@ -1,38 +1,47 @@
 import {CategoryType, FeaturedType , DishType, RestaurantType} from '../types/interfaces'
 
-import PizzaIcon from '../assets/images/pizzaIcon.png'
+import PizzaIcon from '../assets/images/pizzaIcon.png';
+import Burguer from '../assets/icons/burguer.png';
+import Pizza from '../assets/icons/Pizza.png'
+import Galeto from '../assets/icons/Galeto.png'
+import FrutosDoMar from '../assets/icons/FrutosDoMar.png'
+import Snack from '../assets/icons/Snack.png'
+import Cafe from '../assets/icons/Cafe.png'
+import Sorvete from '../assets/icons/Sorvete.png'
+import Sobremesa from '../assets/icons/Sobremesas.png'
+import Drinks from '../assets/icons/Drinks.png'
 
 
 export const categories: CategoryType[] = [
     {
         id: 1,
-        name: 'Pizza',
-        image: PizzaIcon
+        name: 'Hambúrguer',
+        image: Burguer
     },
     {
         id: 2,
-        name: 'Burger',
-        image: PizzaIcon
+        name: 'Pizza',
+        image: Pizza
     },
     {
         id: 3,
-        name: 'Italian',
-        image: PizzaIcon
+        name: 'Carne',
+        image: Galeto
     },
     {
         id: 4,
-        name: 'Chinese',
-        image: PizzaIcon
+        name: 'Snacks',
+        image: Snack
     },
     {
         id: 5,
-        name: 'Noodles',
-        image: PizzaIcon
+        name: 'Sobremesa',
+        image: Sobremesa
     },
     {
         id: 6,
-        name: 'Sweets',
-        image: PizzaIcon
+        name: 'Drinks',
+        image: Drinks
     },
 
 ]

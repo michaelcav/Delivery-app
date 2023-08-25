@@ -23,7 +23,7 @@ const Categories: React.FC<CategoriesProps> = () => {
         {
           categories.map((category, index) => {
             let isActive = category.id == activeCategory;
-            let btnClass = isActive ? ' bg-gray-600' : ' bg-gray-200';
+            let btnClass = isActive ? ' bg-orange-400' : ' bg-gray-200';
             let textClass = isActive ? ' font-smibold text-gray-800' : ' text-gray-500';
             return (
               <View
@@ -35,7 +35,7 @@ const Categories: React.FC<CategoriesProps> = () => {
                   <Image style={{ width: 45, height: 45 }} source={category.image} />
 
                 </TouchableOpacity>
-                <Text className={'text-sm' + textClass} >{category.name}</Text>
+                <Text className={'text-sm ' + textClass} >{category.name}</Text>
               </View>
             )
           })
