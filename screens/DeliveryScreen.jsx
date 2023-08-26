@@ -2,15 +2,26 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 // import { featured } from '../constants'
 import { useNavigation } from '@react-navigation/native';
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import MapView, { Marker } from 'react-native-maps'
 import { themeColors } from '../theme';
 import * as Icon from 'react-native-feather'
 import { selectRestaurant } from '../slices/restaurantSlice'
+import { emptyCart } from '../slices/cartSlice';
+import { useDispatch } from 'react-redux'
 
 export default function DeliveryScreen() {
+
   const restaurant = useSelector(selectRestaurant);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  const cancelOrder = () => {
+    navigation.navigate('Home');
+    dispatch(emptyCart());
+  }
+
+
   return (
     <View className='flex-1'>
       {/* map view */}
@@ -56,8 +67,8 @@ export default function DeliveryScreen() {
           <View className='p-1 rounded-full'
             style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
             <Image
-             style={{borderRadius: 100, overlayColor: 'orange' }}
-             className='h-16 w-16'
+              style={{ borderRadius: 100, overlayColor: 'orange' }}
+              className='h-16 w-16'
               source={require('../assets/images/Cat.gif')} />
           </View>
           <View className='flex-1 ml-3'>
@@ -72,11 +83,13 @@ export default function DeliveryScreen() {
             <TouchableOpacity className='bg-white p-2 rounded-full'>
               <Icon.Phone fill={themeColors.bgColor(1)} stroke={themeColors.bgColor(1)} strokeWidth={1} />
             </TouchableOpacity>
+
             <TouchableOpacity
-            onPress={() => navigation.navigate('Home')}
-            className='bg-white p-2 rounded-full'>
+              onPress={() => cancelOrder()}
+              className='bg-white p-2 rounded-full'>
               <Icon.X stroke={'red'} strokeWidth={2} />
             </TouchableOpacity>
+
           </View>
         </View>
       </View>

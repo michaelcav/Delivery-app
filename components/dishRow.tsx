@@ -36,7 +36,7 @@ const DishRow: React.FC<DishProps> = ({ item }) => {
           <Text className='text-gray-700'>{item.description}</Text>
         </View>
         <View className='flex-row justify-between pl-3 items-center'>
-          <Text className='text-gray-700 text-lg font-bold'>${item.price}
+          <Text className='text-gray-700 text-lg font-bold'>R$ {item.price}
           </Text>
           <View className='flex-row items-center'>
 

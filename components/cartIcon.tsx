@@ -5,8 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { selectCartItems, selectCartTotal } from '../slices/cartSlice';
 import { useSelector } from 'react-redux';
 
-export default function CartIcon() {
-
+const CartIcon: React.FC = () => {
   const navigation = useNavigation();
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal)
@@ -37,3 +36,5 @@ export default function CartIcon() {
     </View>
   )
 }
+
+export default CartIcon;
