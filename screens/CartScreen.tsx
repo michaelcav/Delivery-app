@@ -26,17 +26,20 @@ const CartScreen: React.FC = () => {
   const navigation = useNavigation()
 
   useEffect(() => {
-    const items = cartItems.reduce((group: { [key: string]: DescriptionType[] }, item: DescriptionType) => {
+    const items = cartItems.reduce((group:any, item:any) => {
+      
       if (group[item.id]) {
         group[item.id].push(item)
       } else {
         group[item.id] = [item]
       }
       return group
+      
+      
     }, {})
     setGroupedItems(items)
   }, [cartItems])
-
+  
 
 
   return (

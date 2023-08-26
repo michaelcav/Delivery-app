@@ -24,17 +24,19 @@ export const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<CartItem>) => {
       state.items.push(action.payload);
     },
-    removeFromCart: (state, action: PayloadAction<number>) => {
-      const itemIndex = state.items.findIndex(item => item.id === action.payload);
-      if (itemIndex !== -1) {
-        state.items.splice(itemIndex, 1);
-      } else {
-        console.log(`Can't remove item that is not in the cart.`);
+    removeFromCart: (state, action) => {
+      let newCart = [...state.items];
+      let itemIndex = state.items.findIndex(item=> item.id==action.payload.id);
+      if(itemIndex>=0){
+        newCart.splice(itemIndex, 1);
+      }else{
+        console.log("can't remove item as its not in the Cart");
       }
+      state.items = newCart
     },
-    emptyCart: state => {
+    emptyCart: (state, action)=>{
       state.items = [];
-    },
+  }
   },
 });
 
@@ -46,5 +48,5 @@ export const selectCartItemsById = (state: { cart: CartState }, id: number) =>
   state.cart.items.filter(item => item.id === id);
 export const selectCartTotal = (state: { cart: CartState }) =>
   state.cart.items.reduce((total, item) => total + item.price, 0);
-
+console.log(removeFromCart)
 export default cartSlice.reducer;
