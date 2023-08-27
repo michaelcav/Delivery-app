@@ -3,21 +3,21 @@ import { View, Text, TouchableOpacity, Image, TouchableWithoutFeedback } from 'r
 import * as Icon from 'react-native-feather'
 import { RestaurantType } from '../types/interfaces';
 import { useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack';
 
 interface RestaurantCardProps {
   item: RestaurantType;
 }
 
+export type RootStackParamList = {
+  Restaurant: { item: RestaurantType } | undefined;
+};
+
 const RestaurantCard: React.FC<RestaurantCardProps> = ({ item }) => {
-  const navigation = useNavigation();
-
-  const handleRestaurantPress = () => {
-    navigation.navigate('Restaurant', {...item}); // Pass the entire 'item' object
-  };
-
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
   return (
     <TouchableWithoutFeedback
-      onPress={handleRestaurantPress}
+      onPress={() => navigation.navigate('Restaurant', {...item} )}
     >
       <View
         style={{ shadowColor: '#000', shadowOpacity: 0.2 }}

@@ -39,7 +39,7 @@ const CartScreen: React.FC = () => {
     }, {})
     setGroupedItems(items)
   }, [cartItems])
-  
+
 
 
   return (
@@ -126,7 +126,7 @@ const CartScreen: React.FC = () => {
             <Text className='text-gray-700 font-extrabold'>R$ {frete + cartTotal}</Text>
           </View>
           <TouchableOpacity
-            onPress={() => { navigation.navigate('Order'); }}
+            onPress={() => { navigation.navigate('Order' as never ); }}
             style={{ backgroundColor: themeColors.bgColor(1) }}
             className='p-3 rounded-full'>
             <Text className='text-white text-center font-bold'>Pedir</Text>

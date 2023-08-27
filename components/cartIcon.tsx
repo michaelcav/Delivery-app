@@ -15,7 +15,7 @@ const CartIcon: React.FC = () => {
   return (
     <View className='absolute bottom-5 w-full z-50'>
       <TouchableOpacity
-        onPress={()=> navigation.navigate('Cart')}
+        onPress={()=> navigation.navigate('Cart' as never)}
         style={{ backgroundColor: themeColors.bgColor(1) }}
         className='flex-row justify-between items-center mx-5 rounded-full p-4 py-3 shadow-lg'
       >

@@ -1,13 +1,13 @@
 import { View, Text, Image } from 'react-native'
 import React, { useEffect } from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/core';
 
 export default function OrderScreen() {
   const navigation =  useNavigation();
   useEffect(() => {
   setTimeout(()=> {
     // move to delivery screen
-    navigation.navigate('Delivery')
+    navigation.navigate('Delivery' as never)
   },3000)
   }, [])
   return (
